@@ -71,10 +71,7 @@ kg.prototype={
 	client:{
 		'cookiesEnabled':window.navigator.cookieEnabled,
 		'userAgent':window.navigator.userAgent,
-		'webdriver':window.navigator.webdriver,
-		'platform':window.navigator.userAgentData.platform,
-		'mobile':window.navigator.userAgentData.mobile,
-		'logicalProcessors':window.navigator.hardwareConcurrency
+		'webdriver':window.navigator.webdriver
 	},
 	uuidv4:function(){
 		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){
