@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hangman | CopyPaste Games</title>
+		<link rel="stylesheet" href="./game.css">
+	</head>
+	<body>
+		<div id="introScreen">
+			<div id="is_centerV">
+				<div id="is_centerH">
+					<img src="./assets/CopyPasteGames.png" style="height:100%;width:auto;display:none;" draggable="false" id="copyPasteLogo">
+				</div>
+			</div>
+		</div>
+		<div id="hangmanContainer">
+			<img src="./assets/hangman0.png" style="width:100%;height:100%;" draggable="false" id="hangmanImg">
+		</div>
+		<div id="wordToGuess">Hangman | CopyPaste Games</div>
+		<div id="guessButtons"></div>
+		<div id="overlay">
+			<div class="centerText" id="endingMessage"></div>
+			<div id="playAgainBtn" onclick="$('#overlay').fadeOut(250);loadNewGame()">
+				<div class="centerText">
+					Play Again
+				</div>
+			</div>
+		</div>
+		<script src="./jquery.js"></script>
+		<script src="./kgLib.js"></script>
+		<script src="./game.js"></script>
+	</body>
+</html>
