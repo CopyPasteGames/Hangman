@@ -1,5 +1,5 @@
 $(window).bind("load",()=>{
-	loadNewGame()
+	newGame()
 	$('#copyPasteLogo').delay(200).fadeIn(250)
 	$('#copyPasteLogo').delay(975).fadeOut(250)
 	$("#introScreen").delay(1700).fadeOut(750)
@@ -176,7 +176,8 @@ wordList=[
 	'heard',
 	'farm',
 	'pass',
-	'early'
+	'early',
+	'supercalafragilisticexpialidocious'
 ]
 
 wordToGuess='None'
@@ -220,10 +221,14 @@ function newGameMessage(message){
 	$('#overlay').fadeIn(500)
 }
 
+function newGame() {
+	wordToGuess=kg.randomItem(wordList)
+	loadNewGame()
+}
+
 function loadNewGame(){
 	$('#guessButtons').html('')
 	$('#hangmanImg').attr({"src":"./assets/hangman0.png"})
-	wordToGuess=kg.randomItem(wordList)
 	failedGuesses=[]
 	passedGuesses=[]
 	livesLeft=6
