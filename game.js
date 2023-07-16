@@ -5,7 +5,7 @@ $(window).bind("load",()=>{
 	$("#introScreen").delay(1700).fadeOut(750)
 })
 
-compliments=[
+const compliments = [
 	'Awesome!',
 	'Nice Job!',
 	'Doin\' Great!',
@@ -19,36 +19,16 @@ compliments=[
 	'Super Awesome!'
 ]
 
-alphabet=[
-	'a',
-	'b',
-	'c',
-	'd',
-	'e',
-	'f',
-	'g',
-	'h',
-	'i',
-	'j',
-	'k',
-	'l',
-	'm',
-	'n',
-	'o',
-	'p',
-	'q',
-	'r',
-	's',
-	't',
-	'u',
-	'v',
-	'w',
-	'x',
-	'y',
+const alphabet = [
+	'a', 'b', 'c', 'd', 'e',
+	'f', 'g', 'h', 'i', 'j',
+	'k', 'l', 'm', 'n', 'o',
+	'p', 'q', 'r', 's', 't',
+	'u', 'v', 'w', 'x', 'y',
 	'z'
 ]
 
-wordList=[
+const wordList = [
 	'hello',
 	'world',
 	'engine',
@@ -177,63 +157,102 @@ wordList=[
 	'farm',
 	'pass',
 	'early',
-	'supercalafragilisticexpialidocious'
+	'supercalafragilisticexpialidocious',
+	'gamer',
+	'anger',
+	'happy',
+	'sad',
+	'denmark',
+	'human',
+	'jazz',
+	'bee',
+	'cringe',
+	'telephone',
+	'marker',
+	'computer',
+	'laptop',
+	'keyboard',
+	'anime',
+	'animation',
+	'cartoon',
+	'shows',
+	'movies',
+	'director',
+	'job',
+	'money',
+	'income',
+	'profit',
+	'house',
+	'car',
+	'kids',
+	'wife',
+	'women',
+	'man',
+	'person',
+	'human'
 ]
 
-wordToGuess='None'
-failedGuesses=[]
-passedGuesses=[]
-livesLeft=6
+wordToGuess = 'None'
+failedGuesses = []
+passedGuesses = []
+livesLeft = 6
 
-function renderWord(){
-	var string=''
-	for(let i=0;i<wordToGuess.length;i++){
-		if(passedGuesses.indexOf(wordToGuess[i])!=-1){
-			string=string+wordToGuess[i].toUpperCase()+" "
-		}else{
-			string=string+"_ "
+function renderWord() {
+	var string = ''
+	for(let i=0; i < wordToGuess.length; i++) {
+		if(passedGuesses.indexOf(wordToGuess[i])!=-1) {
+			string = string + wordToGuess[i].toUpperCase() + " "
+		} else {
+			string = string + "_ "
 		}
 	}
 	$('#wordToGuess').html(string)
-	if(string.removeSpace().toLowerCase()==wordToGuess.toLowerCase()){
+	if(string.removeSpace().toLowerCase() == wordToGuess.toLowerCase()) {
 		newGameMessage(kg.randomItem(compliments))
 	}
 }
 
-function makeGuess(elem,letter){
-	if(wordToGuess.indexOf(letter.toLowerCase())!=-1){
+function showWord() {
+	$('#wordToGuess').html(wordToGuess.split('').join(" "))
+}
+
+function makeGuess(elem, letter) {
+	if(wordToGuess.indexOf(letter.toLowerCase()) != -1) {
 		passedGuesses.push(letter.toLowerCase())
-		$(elem).css({"background-color":"rgba(40,240,40,0.5)"})
+		$(elem).css({"background-color": "rgba(40,240,40,0.5)"})
 		renderWord()
-	}else{
-		if(failedGuesses.indexOf(letter.toLowerCase())==-1){
-			livesLeft=livesLeft-1
-			if(livesLeft==0)newGameMessage("Word Failed.")
-			$('#hangmanImg').attr({"src":"./assets/hangman"+(6-livesLeft)+".png"})
-			$(elem).css({"background-color":"rgba(255,40,40,0.5)"})
+	} else {
+		if(failedGuesses.indexOf(letter.toLowerCase()) == -1) {
+			livesLeft = livesLeft - 1
+			if(livesLeft == 0) {
+				newGameMessage("Word Failed.")
+				showWord()
+			}
+			$('#hangmanImg').attr({"src": "./assets/hangman" + (6 - livesLeft) + ".png"})
+			$(elem).css({"background-color": "rgba(255,40,40,0.5)"})
 			failedGuesses.push(letter.toLowerCase())
 		}
 	}
 }
 
-function newGameMessage(message){
+function newGameMessage(message) {
 	$('#endingMessage').html(message)
 	$('#overlay').fadeIn(500)
 }
 
 function newGame() {
-	wordToGuess=kg.randomItem(wordList)
+	wordToGuess = kg.randomItem(wordList)
 	loadNewGame()
 }
 
-function loadNewGame(){
+function loadNewGame() {
 	$('#guessButtons').html('')
-	$('#hangmanImg').attr({"src":"./assets/hangman0.png"})
-	failedGuesses=[]
-	passedGuesses=[]
-	livesLeft=6
-	for(let i=0;i<alphabet.length;i++){
-		var letter=alphabet[i].toUpperCase()
+	$('#hangmanImg').attr({"src": "./assets/hangman0.png"})
+	failedGuesses = []
+	passedGuesses = []
+	livesLeft = 6
+	for(let i=0; i < alphabet.length; i++){
+		var letter = alphabet[i].toUpperCase()
 		$('#guessButtons').append(`<div class="guessBtn" onclick="makeGuess(this,'${letter}')">${letter}</div>`)
 	}
 	renderWord()
