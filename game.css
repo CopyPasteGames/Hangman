@@ -114,3 +114,15 @@ body{
 	left:25%;
 	font-size:1.5vw;
 }
+
+#bugReportBtn {
+	position:absolute;
+	border-top-left-radius:8px;
+	width:100px;
+	height:38px;
+	left:calc(100% - 100px);
+	top:calc(100% - 38px);
+	background-color:rgba(0,0,0,0.2);
+	font-size:1.1em;
+	padding:0.75%;
+}

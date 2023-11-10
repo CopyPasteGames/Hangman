@@ -16,7 +16,9 @@ const compliments = [
 	'Super!',
 	'Super Cool!',
 	'Very Cool!',
-	'Super Awesome!'
+	'Super Awesome!',
+    'Phew!',
+    'Keep It Up!'
 ]
 
 const alphabet = [
@@ -189,7 +191,27 @@ const wordList = [
 	'women',
 	'man',
 	'person',
-	'human'
+	'human',
+    'bright',
+    'sight',
+    'flight',
+    'hippo',
+    'crypt',
+    'textile',
+    'underground',
+    'chamber',
+    'especially',
+    'beneath',
+    'subterranean',
+    'constructed',
+    'heritage',
+    'techniques',
+    'adversarial',
+    'constructing',
+    'variant',
+    'columned',
+    'restored',
+    'temporarily'
 ]
 
 wordToGuess = 'None'
@@ -213,7 +235,7 @@ function renderWord() {
 }
 
 function showWord() {
-	$('#wordToGuess').html(wordToGuess.split('').join(" "))
+	$('#wordToGuess').html(wordToGuess.split('').join(" ").toUpperCase())
 }
 
 function makeGuess(elem, letter) {
@@ -256,4 +278,9 @@ function loadNewGame() {
 		$('#guessButtons').append(`<div class="guessBtn" onclick="makeGuess(this,'${letter}')">${letter}</div>`)
 	}
 	renderWord()
+}
+
+function reportBug() {
+    window.open('https://rainydais.com/bugreport?app=Hangman', 'popUpWindow', 'height=675,width=600,left=10,top=10,,scrollbars=yes,menubar=no')
+    return false
 }
