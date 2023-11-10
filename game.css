@@ -125,4 +125,5 @@ body{
 	background-color:rgba(0,0,0,0.2);
 	font-size:1.1em;
 	padding:0.75%;
+    cursor:pointer;
 }
