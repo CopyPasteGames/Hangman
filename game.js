@@ -281,6 +281,6 @@ function loadNewGame() {
 }
 
 function reportBug() {
-    window.open('https://rainydais.com/bugreport?app=Hangman', 'popUpWindow', 'height=675,width=600,left=10,top=10,,scrollbars=yes,menubar=no')
+    window.open('https://rainydais.com/bugreport?app=Hangman%20(CopyPaste%20Games)', 'popUpWindow', 'height=675,width=600,left=10,top=10,,scrollbars=yes,menubar=no')
     return false
 }
